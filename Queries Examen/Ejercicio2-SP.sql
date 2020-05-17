@@ -95,8 +95,6 @@ IF @existenRegistros > 0 BEGIN
         YEAR(o.OrderDate),
         sp.promedio,
         v.SumaVentas
-
-    SELECT 1 as Successed, 'Se han almacenado los registros' as MSG
     
 END ELSE BEGIN  
 
@@ -182,9 +180,9 @@ WITH
         YEAR(o.OrderDate),
         sp.promedio,
         v.SumaVentas
-
-    SELECT 1 as Successed, 'Se han almacenado los registros' as MSG
 END
+
+    SELECT * FROM example.fact_summary
 
 GO
 
