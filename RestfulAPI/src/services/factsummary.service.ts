@@ -7,7 +7,7 @@ export class FactSummaryService{
     public async GetFactSummary(req: Request, res:Response){
         const runSP: FactSummary[] = await getConnection().query('EXEC example.SP_ADD_FACT_SUMARRY');
 
-        res.status(201).json(runSP[0]);
+        res.status(201).json(runSP);
     }
 
     public async FactSummaryOneCustomer(req: Request, res: Response){
