@@ -14,11 +14,14 @@ import {MainController} from "./controller/main.controller";
 
 import {SupplierController} from "./controller/supplier.controller";
 
+import {FactSummaryController} from "./controller/factsummary.controller";
+
 class App{
 
     public app: Application;
     public main_controller: MainController;
     public supplier_controller: SupplierController;
+    public factsummary_controller : FactSummaryController;
 
     constructor(){
         this.app = express();
@@ -26,6 +29,7 @@ class App{
         this.setDBConnection();
         this.main_controller = new MainController(this.app);
         this.supplier_controller = new SupplierController(this.app);
+        this.factsummary_controller = new FactSummaryController(this.app);
     }
 
     private setConfig(){
