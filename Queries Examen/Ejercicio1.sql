@@ -7,7 +7,7 @@ WITH
         FROM example.Customers as c
         INNER JOIN example.[Order] as o 
         ON c.CustomerID = o.CustumerID
-        INNEr JOIN example.OrderDetail as od 
+        INNER JOIN example.OrderDetail as od 
         ON o.OrderID = od.OrderID
         INNER JOIN example.product as p 
         ON od.ProductID = p.ProductoID
@@ -24,7 +24,7 @@ WITH
         FROM example.Customers as c
         INNER JOIN example.[Order] as o 
         ON c.CustomerID = o.CustumerID
-        INNEr JOIN example.OrderDetail as od 
+        INNER JOIN example.OrderDetail as od 
         ON o.OrderID = od.OrderID
         INNER JOIN example.product as p 
         ON od.ProductID = p.ProductoID
@@ -34,25 +34,23 @@ WITH
             c.CustomerID
     )
 
-
-
 SELECT 
     c.CustomerID,
     c.CustomerName,
     s.SupplierID,
     s.SupplierName,
     MONTH(o.OrderDate) as mes,
-    YEAR (o.OrderDate) as anio,
+    YEAR(o.OrderDate) as anio,
     SUM(od.QUantity * p.Price) as total,
     CASE
         WHEN SUM(od.QUantity * p.Price) < sp.promedio THEN 0
         ELSE 1
     END AS SuperoPromedio,
-    SUM(od.QUantity * p.Price)/v.SumaVentas as PorcentajeVentaMensual
+    CONVERT(DECIMAL(10,6),SUM(od.QUantity * p.Price)/v.SumaVentas) as PorcentajeVentaMensual
 FROM example.Customers as c
 INNER JOIN example.[Order] as o 
 ON c.CustomerID = o.CustumerID
-INNEr JOIN example.OrderDetail as od 
+INNER JOIN example.OrderDetail as od 
 ON o.OrderID = od.OrderID
 INNER JOIN example.product as p 
 ON od.ProductID = p.ProductoID
